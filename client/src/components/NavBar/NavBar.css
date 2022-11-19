@@ -1,0 +1,34 @@
+.navBar{
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    height: 70px;
+    box-shadow: 0 15px 15px #0000001a;
+}
+
+.nav-links{
+    display: flex;
+    justify-content: space-between;
+    width: 245px;
+    align-items: center;
+}
+
+.nav-links a{
+    text-decoration: none;
+    color: black;
+}
+
+.nav-logo{
+    width: 140px;
+}
+
+.nav-logo-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

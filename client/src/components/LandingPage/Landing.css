@@ -1,0 +1,51 @@
+.landing-container{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 35px;
+}
+
+.landing-container img{
+    width: 50%;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+      background-color: lightblue;
+    }
+  }
+
+
+.landing-welcome h1{
+  font-size: 58px;
+}
+
+
+.landing-page-button {
+  width: 107px;
+  height: 48px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.landing-button-text  {
+  position: absolute;
+  font-size: 18px;
+}
+
+.landing-page-button img {
+  width: 120px;
+}
+
+.landing-page-button:hover{
+  transform: scale(1.1);
+}

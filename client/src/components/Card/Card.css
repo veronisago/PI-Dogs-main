@@ -1,0 +1,48 @@
+.card-container {
+    width: 250px;
+    margin: 20px;
+    border-radius: 15px;
+    box-shadow: 5px 10px 10px #00000024;
+    background-color: white;
+    padding: 25px;
+    height: 370px;
+    overflow-y: hidden;
+}
+
+.card-container:hover {
+    overflow-y: visible;
+    height: auto;
+    animation: slide 0.3s ease;
+    transform: scale(1.05);
+}
+
+@keyframes slide {
+    from {
+        transform: scale(1);
+    }
+}
+
+.card-image {
+    width: 250px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-name {
+    text-decoration: none;
+    color: black;
+}
+
+.card-temperament {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card-element {
+    font-size: 14px;
+    margin: 6px;
+    background-color: #caced5;
+    border-radius: 10px;
+    padding: 3px;
+    padding-inline: 6px;
+}

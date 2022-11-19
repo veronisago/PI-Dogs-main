@@ -1,0 +1,35 @@
+.detail-img-container{
+    background-color: white;
+    border-radius: 22px;
+    margin-left: 53px;
+    margin-top: 33px;
+    padding: 27px;
+}
+
+.detail-img-container img{
+    width: 440px;
+    height: 360px;
+    object-fit: cover;
+}
+
+.detail{
+    margin-top: 152px;
+}
+
+.detail-info{
+    display:flex;
+    justify-content: space-around;
+}
+
+.detail-container{
+    margin-top: 104px;
+    margin-left: 50px;
+}
+
+.detail-container >*{
+    margin-bottom: 23px;
+}
+
+.detail-name{
+    font-size: 35px;
+}
