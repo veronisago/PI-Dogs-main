@@ -22,6 +22,21 @@ const getDogs = async (req, res) => {
     }
 }
 
+const removeDogs = async (req, res) => {
+    try {
+        let { idBreed } = req.params;
+
+        const remove = await Breed.destroy({
+            where: {
+                id: idBreed
+            }
+        })
+        return res.status(200).send('ok');
+    } catch (error) {
+        return res.status(500).send('todo mal');
+    }
+}
+
 const getDogDetail = async (req, res) => {
     const { idBreed } = req.params;
     let totalDogsInfo = await getTotalInfo();
@@ -54,5 +69,6 @@ const postDog = async (req, res) => {
 module.exports = {
     getDogs,
     getDogDetail,
-    postDog
+    postDog,
+    removeDogs
 }

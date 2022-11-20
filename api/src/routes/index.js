@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { getTemperaments } = require('../controllers/TempController.js');
-const { getDogs, getDogDetail, postDog } = require('../controllers/BreedController.js');
+const { getDogs, getDogDetail, postDog, removeDogs } = require('../controllers/BreedController.js');
 
 const router = Router();
 
@@ -16,6 +16,8 @@ router.post('/dogs', postDog)
 
 //GET/temperaments
 router.get('/temperaments', getTemperaments )
+
+router.delete('/dogs/:idBreed', removeDogs)
 
 
 

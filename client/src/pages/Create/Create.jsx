@@ -9,7 +9,7 @@ function validate(create) {
     let isError = false;
     var regName = new RegExp("^[A-Z][a-z]+");
     var regHeight = new RegExp("^[0-9]*(-)[0-9]*");
-    // var regLife = /^[0-9]*[\s][y][e][a][r][s]/g
+    var regLife = /^[0-9]*[\s][y][e][a][r][s]/g
 
     if (!create.name) {
         errors.name = 'Name is required';
@@ -39,12 +39,12 @@ function validate(create) {
         errors.height = 'Height should be a range';
         isError = true;
     }
-    if (!create.life_span) {
+    if (!create.life_span.match(regLife)) {
         errors.life_span = 'Life span must be a number and the word "years"';
         isError = true;
     }
 
-    return isError ? errors : null;
+    return isError ? errors : { isValid: true };
 }
 
 export default function CreatePage() {
@@ -88,11 +88,13 @@ export default function CreatePage() {
                 [property]: value
             }))
         }
+        console.log(create);
+        console.log(errors)
     }
 
     const submitHandler = (event) => {
         event.preventDefault();
-        if (errors == null) {
+        if (errors.isValid) {
             dispatch(postDog(create))
             alert('Perrito creado!!')
             setCreate({
@@ -113,8 +115,10 @@ export default function CreatePage() {
         <div className='create-container'>
             <div className='create-image'><img src="/Dog-create3.png" alt="" /></div>
             <div className='create-form'>
+                <p>{errors.name}</p>
                 <h1>Hey!! creates a new dog breed</h1>
                 <form className='form-container' onSubmit={submitHandler}>
+
                     <div>
                         <label htmlFor="name">Name: </label>
                         <input type='text' name='name' value={create.name} onChange={changeHandler} className='create-inputs'></input>
@@ -122,7 +126,6 @@ export default function CreatePage() {
                             <p>{errors.name}</p>
                         )}
                     </div>
-
                     <div>
                         <label htmlFor="weight">Weight: </label>
                         <input type='number' name='weight' value={create.weight} onChange={changeHandler} className='create-inputs'></input>
