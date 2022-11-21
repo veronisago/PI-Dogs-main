@@ -36,11 +36,6 @@ const rootReducer = (state = initialState, action) => {
         dogs: state.dogs.filter((dog) => dog.id !== action.payload)
       }
 
-    case 'POST_DOG':
-      return {
-        ...state,
-      }
-
     case LOADING:
       return {
         ...state,

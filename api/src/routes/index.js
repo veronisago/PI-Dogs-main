@@ -17,6 +17,7 @@ router.post('/dogs', postDog)
 //GET/temperaments
 router.get('/temperaments', getTemperaments )
 
+//DELETE
 router.delete('/dogs/:idBreed', removeDogs)
 
 

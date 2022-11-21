@@ -18,3 +18,7 @@
     transform: scale(1.05);
     cursor: pointer;
 }
+
+.paging-current-page{
+    background-color: #ff6f21;
+}

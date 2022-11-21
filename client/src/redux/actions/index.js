@@ -16,10 +16,6 @@ export function getDogs(params) {
     }
 }
 
-export function removeDog(id) {
-    return { type: "REMOVE_DOG", payload: id }
-}
-
 
 export function getDogDetail(id) {
     return async function (dispatch) {

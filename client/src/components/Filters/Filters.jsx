@@ -32,7 +32,7 @@ export default function Filters() {
         }
     }
 
-    const clearHandle = () => {
+    const HandleClear = () => {
         setFilter(initialState)
     }
 
@@ -70,7 +70,7 @@ export default function Filters() {
                         <option value="created">Created breeds</option>
                         <option value="api">Existing breeds</option>
                     </select>
-                    <button className="filter-button" onClick={clearHandle}><img src="/filter.png" alt="" /></button>
+                    <button className="filter-button" onClick={HandleClear}><img src="/filter.png" alt="" /></button>
                 </div>
             </div>
         </div>

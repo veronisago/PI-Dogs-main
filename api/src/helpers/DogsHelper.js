@@ -1,7 +1,7 @@
 const { Breed, Temperament } = require('../db.js');
 const axios = require('axios');
 
-
+//Retorna toda la info: db y api.
 const getTotalInfo = async () => {
     const apiUrl = await axios.get(`https://api.thedogapi.com/v1/breeds`);
 
@@ -20,12 +20,14 @@ const getTotalInfo = async () => {
     return totalInfo;
 }
 
+//se necesita tener en un mismo formato(api y db) para realizar las comparaciones
 const weightFormat = (weight) => {
     if (typeof weight ==='number') return weight;
 
     return weight.slice(-4).replace(/[-\s–]/g, "") 
 }
 
+//Ordenamiento por peso o alfabeticamente
 const sortDogs = (array, order, orderBy) => {
     if (orderBy === 'weight') { 
         if (order == 'asc') return array.sort((a, b) => weightFormat(a.weight) - weightFormat(b.weight))
@@ -39,7 +41,7 @@ const sortDogs = (array, order, orderBy) => {
 }
 
 
-
+//recibe el array con info de la aip y db y nos devuelve un formato con propiedades iguales
 const dogsFormat = (array) => {
 
     return array.map((e) => {
@@ -55,7 +57,7 @@ const dogsFormat = (array) => {
     })
 }
 
-
+//filtrar perros que vienen de api o db(se diferencian por el tipo de id)
 const sourceFilter = (array, source) => {
     if (source == 'api') {
         return array.filter((e) => typeof e.id == 'number')
@@ -66,12 +68,12 @@ const sourceFilter = (array, source) => {
     return array;
 }
 
-
+//filtro por temperamento
 const tempFilter = (array, temp) => {
     return array.filter((e) => e.temperament?.includes(temp))
 }
 
-
+//filtro por nombre de la raza
 const nameFilter = (array, name) => {
     return array.filter(e => e.name.toLowerCase().includes(name.toLowerCase()))
 }

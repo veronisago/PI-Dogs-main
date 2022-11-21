@@ -54,6 +54,7 @@ export default function Home() {
                             dogsPerPage={dogsPerPage}
                             allDogs={allDogs.length}
                             paging={paging}
+                            page={currentPage}
                         />
                     </>
             }

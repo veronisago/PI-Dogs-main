@@ -1,11 +1,11 @@
 import React from "react";
 import './Paging.css'
 
-export default function Paging({ dogsPerPage, allDogs, paging }) {
+export default function Paging({ dogsPerPage, allDogs, paging, page }) {
     const pageNumber = [];
 
-    for (let i = 0; i <= Math.ceil(allDogs / dogsPerPage); i++) {
-        pageNumber.push(i+1);
+    for (let i = 0; i < Math.ceil(allDogs / dogsPerPage); i++) {
+        pageNumber.push(i + 1);
     }
 
     return (
@@ -14,7 +14,7 @@ export default function Paging({ dogsPerPage, allDogs, paging }) {
                 {pageNumber &&
                     pageNumber.map(number => (
                         <li key={number} >
-                            <button onClick={() => paging(number)} className="paging-button">{number}</button>
+                            <button onClick={() => paging(number)} className={`paging-button ${page === number && "paging-current-page"}`}>{number}</button>
                         </li>
                     ))}
             </ul>

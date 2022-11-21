@@ -1,13 +1,15 @@
 const { Breed } = require('../db.js');
 const { getTotalInfo, sortDogs, dogsFormat, sourceFilter, nameFilter, tempFilter } = require('../helpers/DogsHelper')
 
+//Ruta que me retorna todos los perros y si hay algun query los filtra u ordena
 const getDogs = async (req, res) => {
 
     try {
         let { name, order, orderBy, source, temp } = req.query
         let totalDogsInfo = await getTotalInfo();
+        console.log(totalDogsInfo)
 
-
+        //aqui usamos el helper para que arraydogs que contiene a los perros de api y db  tengan el mismo formato de propiedades
         let arrayDogs = dogsFormat(totalDogsInfo)
 
         if (name) arrayDogs = nameFilter(arrayDogs, name)
@@ -22,6 +24,7 @@ const getDogs = async (req, res) => {
     }
 }
 
+//Eliminar un perro que ha sido creado
 const removeDogs = async (req, res) => {
     try {
         let { idBreed } = req.params;
@@ -37,6 +40,7 @@ const removeDogs = async (req, res) => {
     }
 }
 
+//Dettalle de cada perro
 const getDogDetail = async (req, res) => {
     const { idBreed } = req.params;
     let totalDogsInfo = await getTotalInfo();
@@ -52,6 +56,7 @@ const getDogDetail = async (req, res) => {
     }
 }
 
+//Creacion de un perro 
 const postDog = async (req, res) => {
     const { name, height, weight, life_span, temperament } = req.body;
 

@@ -50,7 +50,6 @@ function validate(create) {
 export default function CreatePage() {
 
     const dispatch = useDispatch()
-    // const history = useHistory();
     const temperaments = useSelector((state) => state.temperaments)
     const [errors, setErrors] = useState({})
 
@@ -88,8 +87,6 @@ export default function CreatePage() {
                 [property]: value
             }))
         }
-        console.log(create);
-        console.log(errors)
     }
 
     const submitHandler = (event) => {
@@ -108,7 +105,6 @@ export default function CreatePage() {
         } else {
             alert('You have to complete the form')
         }
-        // history.push("/home");
     }
 
     return (
