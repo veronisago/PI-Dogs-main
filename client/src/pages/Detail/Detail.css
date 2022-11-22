@@ -21,9 +21,22 @@
 .detail{
     margin-top: 111px;
 }
+.detail-line-decoration{
+    background-color: wheat;
+    height: 2px;
+    color: #fc892e;
+    margin: -15px;
+    width: 418px;
+    margin-left: 2px;
+}
 
 .detail-temp{
     display: flex;
+}
+
+.detail-temp-p{
+    padding-right: 6px;
+    font-size: 19px;
 }
 
 .detail-info{
@@ -47,4 +60,5 @@
 
 .detail-text{
     font-size: 22px;
+    padding: 15px;
 }

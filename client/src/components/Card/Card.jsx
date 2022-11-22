@@ -16,7 +16,7 @@ export default function Card({ id, image, name, temperament, weight }) {
 
     return (
         <>
-            <div className="card-container">
+            <div className={`card-container ${ typeof id == 'string' && "card-container-created"}`}>
                 {
                     typeof id == 'string' && <div className='card-button'><button onClick={handleClick}>x</button></div>
                 }

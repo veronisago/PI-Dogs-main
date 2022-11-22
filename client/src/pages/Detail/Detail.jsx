@@ -35,12 +35,15 @@ export default function DetailPage(props) {
                 </div>
                 <div className='detail-container'>
                     <p className='detail-name'>{dogDetail.name}</p>
+                    <div className='detail-line-decoration'>-</div>
                     <div className='detail-temp'>{dogDetail.temperament?.map((temp, i) => (
-                        <b key={i}>{temp},  </b>
+                        <b key={i} className='detail-temp-p'>{temp},  </b>
                     ))}</div>
-                    <p className='detail-text'>Height: {dogDetail.height} in.</p>
-                    <p className='detail-text'>Weight: {dogDetail.weight} lb</p>
-                    <p className='detail-text'>Life span: {dogDetail.life_span}</p>
+                    <ul>
+                        <li className='detail-text'>Height: {dogDetail.height} in.</li>
+                        <li className='detail-text'>Weight: {dogDetail.weight} lb</li>
+                        <li className='detail-text'>Life span: {dogDetail.life_span}</li>
+                    </ul>
                 </div>
             </div>
         </div>

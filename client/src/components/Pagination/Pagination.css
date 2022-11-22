@@ -1,10 +1,10 @@
-.paging {
+.pagination {
     display: flex;
     justify-content: space-around;
     list-style: none;
 }
 
-.paging-button{
+.pagination-button{
     border: none;
     background-color: white;
     border-radius: 42px;
@@ -14,11 +14,11 @@
     box-shadow: 0 15px 16px #00000030;
 }
 
-.paging-button:hover{
+.pagination-button:hover{
     transform: scale(1.05);
     cursor: pointer;
 }
 
-.paging-current-page{
+.pagination-current-page{
     background-color: #ff6f21;
 }

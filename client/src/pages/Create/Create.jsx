@@ -85,7 +85,7 @@ export default function CreatePage() {
         event.preventDefault();
         if (errors.isValid) {
             dispatch(postDog(create))
-            alert('Perrito creado!!')
+            alert('Puppy created!!')
             setCreate({
                 name: "",
                 weight: 0,
@@ -111,7 +111,7 @@ export default function CreatePage() {
         <div className='create-container'>
             <div className='create-image'><img src="/Dog-create3.png" alt="" /></div>
             <div className='create-form'>
-                <h1>Hey!! creates a new dog breed</h1>
+                <h1>Hey!! create a new dog breed</h1>
                 <form className='form-container' onSubmit={submitHandler}>
                     <div>
                         <div className='create-divs'>

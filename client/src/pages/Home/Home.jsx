@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import { useSelector } from 'react-redux';
 import Card from "../../components/Card/Card";
-import Paging from "../../components/Pagign/Paging";
+import Pagination from "../../components/Pagination/Pagination";
 import './Home.css'
 import Filters from "../../components/Filters/Filters";
 import Loading from "../../components/Loading/Loading";
@@ -18,7 +18,7 @@ export default function Home() {
     const indexOfFirstDog = indexOfLastDog - dogsPerPage //0
     const currentDogs = allDogs.slice(indexOfFirstDog, indexOfLastDog)
 
-    const paging = (pageNumber) => {
+    const pagination = (pageNumber) => {
         setCurrentPage(pageNumber)
     }
 
@@ -50,10 +50,10 @@ export default function Home() {
                                     }
                                     
                         </div>
-                        <Paging
+                        <Pagination
                             dogsPerPage={dogsPerPage}
                             allDogs={allDogs.length}
-                            paging={paging}
+                            pagination={pagination}
                             page={currentPage}
                         />
                     </>
