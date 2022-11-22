@@ -7,7 +7,6 @@ const getDogs = async (req, res) => {
     try {
         let { name, order, orderBy, source, temp } = req.query
         let totalDogsInfo = await getTotalInfo();
-        console.log(totalDogsInfo)
 
         //aqui usamos el helper para que arraydogs que contiene a los perros de api y db  tengan el mismo formato de propiedades
         let arrayDogs = dogsFormat(totalDogsInfo)
@@ -64,7 +63,7 @@ const postDog = async (req, res) => {
         const newDog = await Breed.create({ name, height, weight, life_span });
         await newDog.addTemperament(temperament);
 
-        res.status(200).send(newDog)
+        res.status(201).send(newDog)
 
     } catch (error) {
         res.status(404).send(error.message)
