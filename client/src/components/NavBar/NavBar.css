@@ -14,8 +14,9 @@
 .nav-links{
     display: flex;
     justify-content: space-between;
-    width: 245px;
+    width: 282px;
     align-items: center;
+    font-size: 18px;
 }
 
 .nav-links a{

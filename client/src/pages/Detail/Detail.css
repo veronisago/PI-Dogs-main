@@ -1,9 +1,15 @@
 .detail-img-container{
     background-color: white;
     border-radius: 22px;
-    margin-left: 53px;
-    margin-top: 33px;
     padding: 27px;
+    display: flex;
+    flex-direction: column;
+}
+
+.detail-title{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 31px;
 }
 
 .detail-img-container img{
@@ -13,7 +19,11 @@
 }
 
 .detail{
-    margin-top: 152px;
+    margin-top: 111px;
+}
+
+.detail-temp{
+    display: flex;
 }
 
 .detail-info{
@@ -22,8 +32,8 @@
 }
 
 .detail-container{
-    margin-top: 104px;
-    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
 }
 
 .detail-container >*{
@@ -31,5 +41,10 @@
 }
 
 .detail-name{
-    font-size: 35px;
+    font-size: 43px;
+    display: flex;
+}
+
+.detail-text{
+    font-size: 22px;
 }

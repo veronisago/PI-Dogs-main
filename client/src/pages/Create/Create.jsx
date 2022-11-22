@@ -11,28 +11,20 @@ function validate(create) {
     var regHeight = new RegExp("^[0-9]*(-)[0-9]*");
     var regLife = /^[0-9]*[\s][y][e][a][r][s]/g
 
-    if (!create.name) {
-        errors.name = 'Name is required';
-        isError = true;
-    }
     if (!create.name.match(regName)) {
-        errors.name = 'The name must begin with a capital letter';
+        errors.name = 'Name must begin with a capital letter';
         isError = true;
     }
     if (create.weight < 2 || create.weight > 88) {
-        errors.name = 'Weight is not valid';
+        errors.weight = 'Weight is not valid';
         isError = true;
     }
     if (create.temperament.length < 2) {
         errors.temperament = 'Not enough temperaments'
         isError = true;
     }
-    if (create.temperament.length > 3) {
+    if (create.temperament.length > 6) {
         errors.temperament = 'Too many temperaments'
-        isError = true;
-    }
-    if (!create.height) {
-        errors.height = 'Height is required';
         isError = true;
     }
     if (!create.height.match(regHeight)) {
@@ -107,58 +99,74 @@ export default function CreatePage() {
         }
     }
 
+    const handleClick = (temp) => {
+
+        setCreate({
+            ...create,
+            temperament: create.temperament.filter((e)=> e != temp)
+        })
+    }
+
     return (
         <div className='create-container'>
             <div className='create-image'><img src="/Dog-create3.png" alt="" /></div>
             <div className='create-form'>
-                <p>{errors.name}</p>
                 <h1>Hey!! creates a new dog breed</h1>
                 <form className='form-container' onSubmit={submitHandler}>
+                    <div>
+                        <div className='create-divs'>
+                            <label htmlFor="name">Name: </label>
+                            <input type='text' name='name' value={create.name} onChange={changeHandler} required className='create-inputs'></input>
+                            {errors.name && (
+                                <p><img src="/peligro.png" alt="danger" />{errors.name}</p>
+                            )}
+                        </div>
+                        <div className='create-divs'>
+                            <label htmlFor="weight">Weight: </label>
+                            <input type='number' name='weight' value={create.weight} onChange={changeHandler} required className='create-inputs'></input>
+                            {/* <label>lb</label> */}
+                            {errors.weight && (
+                                <p><img src="/peligro.png" alt="danger" />{errors.weight}</p>
+                            )}
+                        </div>
+                    </div>
+                    <div>
+                        <div className='create-divs'>
+                            <label htmlFor="height">Height: </label>
+                            <input type='text' name="height" placeholder='Type a range, e.g. 2-8 ' required value={create.height} onChange={changeHandler} className='create-inputs'></input>
+                            {/* <label>in.</label> */}
+                            {errors.height && (
+                                <p><img src="/peligro.png" alt="danger" />{errors.height}</p>
+                            )}
+                        </div>
 
-                    <div>
-                        <label htmlFor="name">Name: </label>
-                        <input type='text' name='name' value={create.name} onChange={changeHandler} className='create-inputs'></input>
-                        {errors.name && (
-                            <p>{errors.name}</p>
-                        )}
+                        <div className='create-divs'>
+                            <label htmlFor="life_span">Life span: </label>
+                            <input type='text' name='life_span' placeholder='e.g. 7 years' value={create.life_span} required onChange={changeHandler} className='create-inputs'></input>
+                            {errors.life_span && (
+                                <p><img src="/peligro.png" alt="danger" />{errors.life_span}</p>
+                            )}
+                        </div>
                     </div>
                     <div>
-                        <label htmlFor="weight">Weight: </label>
-                        <input type='number' name='weight' value={create.weight} onChange={changeHandler} className='create-inputs'></input>
-                        {/* <label>lb</label> */}
-                        {errors.weight && (
-                            <p>{errors.weight}</p>
-                        )}
-                    </div>
-
-                    <div>
-                        <label htmlFor="height">Height: </label>
-                        <input type='text' name="height" placeholder='Type a range, e.g. 2-8 ' value={create.height} onChange={changeHandler} className='create-inputs'></input>
-                        {/* <label>in.</label> */}
-                        {errors.height && (
-                            <p>{errors.height}</p>
-                        )}
-                    </div>
-
-                    <div>
-                        <label htmlFor="life_span">Life span: </label>
-                        <input type='text' name='life_span' placeholder='e.g. 7 years' value={create.life_span} onChange={changeHandler} className='create-inputs'></input>
-                        {errors.life_span && (
-                            <p>{errors.life_span}</p>
-                        )}
-                    </div>
-                    <div>
-                        <select name='temp' onChange={(e) => changeHandler(e)} className='create-inputs'>
-                            {temperaments.map((temp) => (
-                                <option value={temp.id} key={temp.id}>{temp.name}</option>
-                            ))}
-                        </select>
-                        {errors.temperament && (
-                            <p>{errors.temperament}</p>
-                        )}
-                    </div>
-                    <div>
-                        {temperaments?.map((e) => create.temperament.includes(String(e.id)) && (<div key={e.id}>{e.name}</div>))}
+                        <div className='create-divs'>
+                            <label htmlFor="temp">Temperaments:</label>
+                            <select name='temp' onChange={(e) => changeHandler(e)} required className='create-inputs'>
+                                {temperaments.map((temp) => (
+                                    <option value={temp.id} key={temp.id}>{temp.name}</option>
+                                ))}
+                            </select>
+                            {errors.temperament && (
+                                <p><img src="/peligro.png" alt="danger" />{errors.temperament}</p>
+                            )}
+                        </div>
+                        <div className='create-container-temp'>
+                            {temperaments?.map((e) => create.temperament.includes(String(e.id)) && (
+                                <button onClick={() => handleClick(e.id)} className='button-delete-temp' key={e.id}>
+                                    {e.name} <img src="/delete.png" alt="delete" />
+                                </button>))
+                            }
+                        </div>
                     </div>
 
                     <button className='create-subtmit-button' type="submit">

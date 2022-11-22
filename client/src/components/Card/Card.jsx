@@ -18,7 +18,7 @@ export default function Card({ id, image, name, temperament, weight }) {
         <>
             <div className="card-container">
                 {
-                    typeof id == 'string' && <button onClick={handleClick}>x</button>
+                    typeof id == 'string' && <div className='card-button'><button onClick={handleClick}>x</button></div>
                 }
                 <img src={image} alt="img not found" className="card-image" />
                 <Link className="card-name" to={`/dog/${id}`}>
