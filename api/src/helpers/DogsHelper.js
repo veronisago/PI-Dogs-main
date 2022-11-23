@@ -70,7 +70,8 @@ const sourceFilter = (array, source) => {
 
 //filtro por temperamento
 const tempFilter = (array, temp) => {
-    return array.filter((e) => e.temperament?.includes(temp))
+    const temp2 = temp.charAt(0).toUpperCase() + temp.slice(1);
+    return array.filter((e) => e.temperament?.includes(temp2))
 }
 
 //filtro por nombre de la raza

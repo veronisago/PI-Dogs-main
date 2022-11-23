@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTemperaments, postDog } from '../../redux/actions';
 import './Create.css'
-
 
 function validate(create) {
     const errors = {};
@@ -57,6 +56,17 @@ export default function CreatePage() {
         dispatch(getTemperaments());
     }, [dispatch]);
 
+
+    const firstUpdate = useRef(true);
+
+    useEffect(() => {
+        if (firstUpdate.current) {
+            firstUpdate.current = false;
+            return;
+          }
+        setErrors(validate(create))
+    }, [create]);
+
     const changeHandler = (event) => {
         const property = event.target.name
         const value = event.target.value
@@ -65,19 +75,11 @@ export default function CreatePage() {
                 ...create,
                 temperament: [...create.temperament, value]
             })
-            setErrors(validate({
-                ...create,
-                temperament: [...create.temperament, value]
-            }))
         } else {
             setCreate({
                 ...create,
                 [property]: value
             })
-            setErrors(validate({
-                ...create,
-                [property]: value
-            }))
         }
     }
 
@@ -99,12 +101,13 @@ export default function CreatePage() {
         }
     }
 
-    const handleClick = (temp) => {
+    const handleDelete = (temp) => {
 
         setCreate({
             ...create,
-            temperament: create.temperament.filter((e)=> e != temp)
+            temperament: create.temperament.filter((e) => e != temp)
         })
+
     }
 
     return (
@@ -162,7 +165,7 @@ export default function CreatePage() {
                         </div>
                         <div className='create-container-temp'>
                             {temperaments?.map((e) => create.temperament.includes(String(e.id)) && (
-                                <button onClick={() => handleClick(e.id)} className='button-delete-temp' key={e.id}>
+                                <button onClick={() => handleDelete(e.id)} className='button-delete-temp' key={e.id}>
                                     {e.name} <img src="/delete.png" alt="delete" />
                                 </button>))
                             }

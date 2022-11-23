@@ -4,7 +4,6 @@ export const GET_ALL_DOGS = "GET_ALL_DOGS";
 export const GET_DOG_DETAIL = "GET_DOG_DETAIL";
 export const GET_TEMPERAMENTS = "GET_TEMPERAMENTS";
 export const LOADING = "LOADING";
-export const REMOVE_DOG = "REMOVE_DOG";
 
 
 export function getDogs(params) {

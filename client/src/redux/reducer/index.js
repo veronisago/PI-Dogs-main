@@ -1,5 +1,5 @@
 
-import { GET_ALL_DOGS, GET_DOG_DETAIL, GET_TEMPERAMENTS, LOADING, REMOVE_DOG } from '../actions';
+import { GET_ALL_DOGS, GET_DOG_DETAIL, GET_TEMPERAMENTS, LOADING } from '../actions';
 
 
 const initialState = {
@@ -28,12 +28,6 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         temperaments: action.payload
-      }
-
-    case REMOVE_DOG:
-      return {
-        ...state,
-        dogs: state.dogs.filter((dog) => dog.id !== action.payload)
       }
 
     case LOADING:
