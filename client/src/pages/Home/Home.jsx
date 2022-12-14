@@ -30,33 +30,32 @@ export default function Home() {
                 <Filters />
             </div>
             {
-                loading ? <Loading/> :
-                    <>
-                        <div className="home-card-container">
-                            {
-                                currentDogs?.map(el => {
-                                    return (
+                loading ? <Loading /> :
+                        <>
+                            <div className="home-card-container">
+                                {
+                                    currentDogs?.map(el => {
+                                        return (
 
-                                        <Card key={el.id}
-                                            id={el.id}
-                                            image={el.image}
-                                            name={el.name}
-                                            temperament={el.temperament}
-                                            weight={el.weight}
+                                            <Card key={el.id}
+                                                id={el.id}
+                                                image={el.image}
+                                                name={el.name}
+                                                temperament={el.temperament}
+                                                weight={el.weight}
                                             />
-                                            )
-                                        })
-                                        
-                                    }
-                                    
-                        </div>
-                        <Pagination
-                            dogsPerPage={dogsPerPage}
-                            allDogs={allDogs.length}
-                            pagination={pagination}
-                            page={currentPage}
-                        />
-                    </>
+                                        )
+                                    })
+
+                                }
+                            </div>
+                            <Pagination
+                                dogsPerPage={dogsPerPage}
+                                allDogs={allDogs.length}
+                                pagination={pagination}
+                                page={currentPage}
+                            />
+                        </>
             }
         </div>
     )
